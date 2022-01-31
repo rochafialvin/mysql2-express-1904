@@ -1,0 +1,13 @@
+31 / 01
+
+Melanjutkan api yang dibuat menggunakan mysql2 di kelas, ada dua pilihan
+1. Clonning semua route pada api todo list
+2. Membuat api untuk project front end yang sudah teman - teman buat.
+
+Jika suatu kolom pada table sql memiliki tipe data DATE, tidak dapat menggunakan default value berupa waktu saat ini.
+contoh :
+  create table(
+    id int auto_increment primary key,
+    created_at date, // DATE (yyyy/mm/dd)
+    updated_at datetime default cuurent_timestamp // DATETIME (yyyy/mm/dd hh:mm:ss)
+  )

@@ -1,0 +1,11 @@
+1. One to many adalah hubungan antar table yang mana salah satu table akan memiliki kolom yang menyimpan primary key milik table lainnya.
+contoh : 
+    - product dengan brand, satu brand dapat memiliki banyak product, namun satu product hanya dapat memiliki satu brand sehingga pada table product akan terdapat kolom yang akan menyimpan primary key milik tabel brand dan tidak sebaliknya, table brand tidak menyimpan primary key milik product.
+
+2. Many to many adalah hubungan antar table dimana tidak ada table antara kedua table ini yang memiliki kolom untuk menyimpan primary key milik table lain. Melainkan akan terbuat table baru sebagai penghubung kedua table ini.
+contoh :
+    - Film dengan category, satu data pada film dapat terhubung ke banyak data pada category, karena satu film mungkin saja memiliki lebih dari satu kategori. Kemudian satu data pada category juga dapat terhubung ke banyak data pada film, mengingat banyak film yang memiliki category yang sama.
+
+3. Connection pool memungkinkan kita untuk memiliki suatu wadah berisi kumpulan connection yang dibutuhkan untuk mengakses database. Karena untuk setiap connection yang ter-generate akan memubutuhkan resource dalam komuter seperti ruang pada RAM, dengan connection pool dapat mengurangi jumlah proses generate connection. Karena dengan connection pool, sebuah connection yang sudah selesai digunakan dapat dikembalikan kembali ke pool untuk kemudian nantinya digunakan oleh userlain. Dapat dianalogikan seperti trolly pada supermarket yang dapat digunakan secara bergantian oleh pengunjung.
+
+4. Pada mysql2 kita dapat menggunakan syntax async await, sehingga kode akan lebih mudah dibaca.
