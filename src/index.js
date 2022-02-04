@@ -3,6 +3,7 @@ const app = express();
 const port = 2022;
 const cors = require("cors");
 const pool = require("./config/database");
+const { insertUser } = require("./models/user");
 
 app.use(cors());
 app.use(express.json());
@@ -13,15 +14,8 @@ app.get("/", (req, res) => {
 
 app.post("/users", async (req, res) => {
   try {
-    const connection = await pool.promise().getConnection();
-
-    const sqlAddUser = `insert into users set ?;`;
-    const dataAddUser = [req.body];
-
-    const [rows, fields] = await connection.query(sqlAddUser, dataAddUser);
-    connection.release();
-
-    res.status(200).send({ rows, fields });
+    const result = await insertUser(req.body);
+    res.status(200).send({ result });
   } catch (error) {
     console.log({ error });
   }
