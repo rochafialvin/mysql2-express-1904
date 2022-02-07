@@ -9,3 +9,23 @@ contoh :
 3. Connection pool memungkinkan kita untuk memiliki suatu wadah berisi kumpulan connection yang dibutuhkan untuk mengakses database. Karena untuk setiap connection yang ter-generate akan memubutuhkan resource dalam komuter seperti ruang pada RAM, dengan connection pool dapat mengurangi jumlah proses generate connection. Karena dengan connection pool, sebuah connection yang sudah selesai digunakan dapat dikembalikan kembali ke pool untuk kemudian nantinya digunakan oleh userlain. Dapat dianalogikan seperti trolly pada supermarket yang dapat digunakan secara bergantian oleh pengunjung.
 
 4. Pada mysql2 kita dapat menggunakan syntax async await, sehingga kode akan lebih mudah dibaca.
+
+
+axios.get("/banks", { params: { search: 'syariah', sort : ['branches','asc'] })
+router.get("/banks", ( req, res, next ) => {
+    req.query : { search: 'syariah', sort: 'branches' }
+})
+
+axios.get("/banks/234")
+router.get("/banks/:bankid", ( req, res, next ) => {
+    req.params.bankid : 234
+})
+
+axios.post("/banks", { name: 'BCA', branches: 239 })
+req.body : { name: 'BCA', branches: 239 }
+
+
+- Transaction adalah sebuah pattern / cara dalam berinteraksi dengan database.
+- Dengan menggunakan transaction, kita dapat memastikan bahwa serangkaian proses yang terpisah saat berinteraksi dengan database akan diproses secara bersamaan.
+- Bersamaan dalam hal ini ialah jika suatu proses akan berhasil, maka akan dipastikan berhasil semua, jika ada salah satu yang mengalami kegagalan, maka akan di gagalkan semua proses interaksinya.
+- Pada umumnya akan digunakan saat melakukan interaksi kepada table yang berbeda namun saling berhubungan. 

@@ -11,3 +11,9 @@ contoh :
     created_at date, // DATE (yyyy/mm/dd)
     updated_at datetime default cuurent_timestamp // DATETIME (yyyy/mm/dd hh:mm:ss)
   )
+
+
+07 / 02
+
+1. Explore dan coba menggunakan api raja ongkir
+2. Terapkan proses transaction pada project yang sedang dibuat jika memang dibutuhkan

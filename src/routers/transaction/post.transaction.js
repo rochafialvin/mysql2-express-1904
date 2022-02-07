@@ -10,6 +10,7 @@ const postTransactionController = async (req, res, next) => {
     // Run query here
     try {
       // Insert data into transaction table
+      // pending
       const sqlInsertTransaction = "insert into transaction set ?;";
       const dataInsertTransaction = [
         {
@@ -23,13 +24,13 @@ const postTransactionController = async (req, res, next) => {
         dataInsertTransaction
       );
 
+      // pending
       const sqlInsertDetailTransaction =
-        "insert into detailTransaction (transaction_id, name, quantity, price) values ?";
+        "insert intos detailTransaction (transaction_id, name, quantity, price) values ?";
       const dataInsertDetailTransaction = req.body.products.map((product) => [
         transactionResult.insertId,
         ...product,
       ]);
-
       await connection.query(sqlInsertDetailTransaction, [
         dataInsertDetailTransaction,
       ]);
