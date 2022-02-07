@@ -1,10 +1,11 @@
+require("dotenv").config();
 const mysql2 = require("mysql2");
 
 const pool = mysql2.createPool({
   host: "localhost",
-  database: "mysql_express",
+  database: "mysql1904",
   user: "root",
-  password: "Mysql123",
+  password: process.env.DB_PASS,
   waitForConnections: true,
   connectionLimit: 50,
 });
