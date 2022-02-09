@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const pool = require("../../config/database");
+const { insertUser } = require("../../models/user");
 
 const postTransactionController = async (req, res, next) => {
   try {
@@ -24,16 +25,27 @@ const postTransactionController = async (req, res, next) => {
         dataInsertTransaction
       );
 
+      // bulk insert : insert data banyak sekaligus
       // pending
       const sqlInsertDetailTransaction =
-        "insert intos detailTransaction (transaction_id, name, quantity, price) values ?";
+        "insert into detailTransaction (transaction_id, name, quantity, price) values ?";
+
+      // req.products = [     ["hoodie", 1, 50000],       ["t-shirt", 3, 150000]        ]
+
+      // dataInsertDetailTransaction = [ [12,"hoodie", 1, 50000], [12, "t-shirt", 3, 150000] ]
+
+      // product : ["t-shirt", 3, 150000]
+      // return :  [12, "t-shirt", 3, 150000]
       const dataInsertDetailTransaction = req.body.products.map((product) => [
         transactionResult.insertId,
         ...product,
       ]);
+
       await connection.query(sqlInsertDetailTransaction, [
         dataInsertDetailTransaction,
       ]);
+
+      await insertUser({});
 
       // run all pending queries
       connection.commit();
@@ -51,3 +63,4 @@ const postTransactionController = async (req, res, next) => {
 router.post("/", postTransactionController);
 
 module.exports = router;
+// localhost:2022/transactions/

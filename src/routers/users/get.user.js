@@ -1,4 +1,12 @@
-app.get("/users", async (req, res) => {
+const router = require("express").Router();
+
+router.get("/users");
+router.get("/users");
+router.get("/users");
+router.get("/users");
+router.get("/users");
+router.get("/users");
+router.get("/users", async (req, res) => {
   try {
     const connection = await pool.promise().getConnection();
 
@@ -14,3 +22,5 @@ app.get("/users", async (req, res) => {
     res.status(500).send({ error });
   }
 });
+
+module.exports = router;
